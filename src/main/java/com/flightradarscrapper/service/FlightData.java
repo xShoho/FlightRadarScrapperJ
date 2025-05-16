@@ -12,7 +12,7 @@ public class FlightData {
     private String status;
     private String arrival_time;
 
-    // Construction
+    // Constructor
 
     public FlightData(String flight_time, String flight_number, String departure_airport, String arrival_airport, String airline, String aircraft, String status, String arrival_time) {
         this.flight_time = flight_time;
