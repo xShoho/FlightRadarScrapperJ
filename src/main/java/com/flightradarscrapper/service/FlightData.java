@@ -28,14 +28,15 @@ public class FlightData {
     // Convert Object to JSON
 
     public JSONObject toJSON() {
-        return new JSONObject("{ \"flight_number\":\"" + this.flight_number +
-                                "\",\"flight_time\":\"" + this.flight_time +
-                                "\",\"departure_airport\":\"" + this.departure_airport +
-                                "\",\"arrival_airport\":\"" + this.arrival_airport +
-                                "\",\"airline\":\"" + this.airline +
-                                "\",\"aircraft\":\"" + this.aircraft +
-                                "\",\"flight_status\":\"" + this.status +
-                                "\",\"arrival_time\":\"" + this.arrival_time + "\"}");
-
+        JSONObject json = new JSONObject();
+        json.put("flight_time", this.flight_time);
+        json.put("flight_number", this.flight_number);
+        json.put("departure_airport", this.departure_airport);
+        json.put("arrival_airport", this.arrival_airport);
+        json.put("airline", this.airline);
+        json.put("aircraft", this.aircraft);
+        json.put("status", this.status);
+        json.put("arrival_time", this.arrival_time);
+        return json;
     }
 }
