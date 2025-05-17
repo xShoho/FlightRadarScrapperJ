@@ -32,9 +32,6 @@ public class Scrapper {
         // Establish Connection
         this.driver.get(url);
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
-
-
-
     }
 
     public void getUrls() {
