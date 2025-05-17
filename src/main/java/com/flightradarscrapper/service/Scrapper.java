@@ -42,15 +42,19 @@ public class Scrapper {
         this.driver.get("https://www.flightradar24.com/data/airports/poland");
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 
-        List<WebElement> tbody = driver.findElements(By.name("tbody"));
+        List<WebElement> tbody = driver.findElements(By.tagName("tbody"));
 
         if(!tbody.isEmpty()) {
-            List<WebElement> links = tbody.get(0).findElements(By.name("a"));
+            List<WebElement> links = tbody.get(0).findElements(By.tagName("a"));
 
             if(!links.isEmpty()) {
                 for(WebElement link: links) {
-                    this.arrival_urls.add(link.getAttribute("href") + "/arrivals");
-                    this.departure_urls.add(link.getAttribute("href") + "/departures");
+                    String href = link.getAttribute("href");
+
+                    if(!href.startsWith("#") && href != null) {
+                        this.arrival_urls.add(href + "/arrivals");
+                        this.departure_urls.add(href + "/departures");
+                    }
                 }
             }
         }
